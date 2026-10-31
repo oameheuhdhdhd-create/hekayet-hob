@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>حكاية حب</title>
+<style>
+:root {
+ --site-primary:#9F315B;
+ --site-secondary:#F5D9E4;
+ --site-background:#FFF5F8;
+ --site-on-primary:#FFFFFF;
+ --site-on-secondary:#57213A;
+ --site-on-background:#421C2D;
+ --site-font-body:Tahoma, Arial, sans-serif;
+ --site-font-heading:Georgia, Tahoma, serif;
+ --site-heading-scale:1;
+ --site-spacing-scale:1;
+ --site-radius-scale:1;
+ --site-decoration-opacity:1;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--site-font-body);background:var(--site-background);color:var(--site-on-background)}
+#app{min-height:100vh;width:100%;border-radius:0;background-color:light-dark(var(--site-background),#21141B);color:light-dark(var(--site-on-background),#FFF0F5);overflow:hidden;position:relative}
+header{padding:calc(28px * var(--site-spacing-scale)) 18px 18px;text-align:center;background:var(--site-primary);color:var(--site-on-primary)}
+h1{font-family:var(--site-font-heading);font-size:calc(2.25rem * var(--site-heading-scale));margin:0 0 8px}
+header p{margin:0;opacity:.9}
+main{max-width:850px;margin:auto;padding:calc(24px * var(--site-spacing-scale)) 16px 44px}
+.card{background:light-dark(#FFFFFF,#30202A);border:1px solid light-dark(#F0D4DF,#513444);border-radius:calc(22px * var(--site-radius-scale));padding:22px;margin:0 0 18px;box-shadow:0 10px 28px #7e315011}
+h2{font-size:calc(1.4rem * var(--site-heading-scale));margin:0 0 14px}
+label{display:block;font-weight:bold;margin:12px 0 7px}
+input,textarea,select{font:inherit;width:100%;padding:12px;border:1px solid #D9A9BD;border-radius:12px;background:light-dark(#fff,#21141B);color:inherit}
+textarea{min-height:85px;resize:vertical}
+button{font:inherit;font-weight:bold;border:0;border-radius:13px;padding:12px 16px;cursor:pointer}
+.primary{background:var(--site-primary);color:var(--site-on-primary)}
+.secondary{background:var(--site-secondary);color:var(--site-on-secondary)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.row button{flex:1}
+.preview{min-height:240px;display:grid;place-items:center;text-align:center;border-radius:18px;padding:25px;background:linear-gradient(145deg,#f7c5d8,#fff0f5 55%,#e6b0c7);color:#682441;position:relative;overflow:hidden}
+.preview .heart{font-size:50px;animation:pulse 1.7s infinite}
+.preview .quote{font-family:var(--site-font-heading);font-size:1.7rem;font-weight:bold;margin:10px auto;max-width:520px}
+.preview .sub{font-size:1rem}
+@keyframes pulse{50%{transform:scale(1.13)}}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
+.tile{background:var(--site-secondary);color:#57213A;border-radius:15px;padding:14px;text-align:center;min-height:115px;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.tile .emoji{font-size:30px}
+.hint{font-size:.9rem;opacity:.8;line-height:1.7}
+footer{text-align:center;padding:20px;opacity:.75;font-size:.9rem}
+</style>
+</head>
+<body>
+<div id="app">
+<header>
+<h1>حكاية حب ♡</h1>
+<p>مساحة صغيرة للمشاعر والكلام الحلو</p>
+</header>
+<main>
+<section class="card">
+<h2>اصنع كارت رومانسي 💌</h2>
+<label for="name">اسم الشخص (اختياري)</label>
+<input id="name" placeholder="اكتب الاسم هنا">
+<label for="message">رسالتك</label>
+<textarea id="message">وجودك بيخلّي الأيام العادية أحلى، وكل ذكرى معاك ليها مكان خاص في قلبي.</textarea>
+<label for="style">شكل الكارت</label>
+<select id="style">
+<option value="rose">وردي وقلوب 🌷</option>
+<option value="night">ليلة مليانة نجوم ✨</option>
+<option value="sunset">غروب دافي 🌅</option>
+</select>
+<div class="row">
+<button class="primary" id="update">اعرض الكارت</button>
+<button class="secondary" id="save">احفظ الصورة 📥</button>
+</div>
+<p class="hint">اكتب رسالتك واضغط «احفظ الصورة» لتنزيل الكارت كصورة PNG على موبايلك.</p>
+</section>
+<section class="card">
+<h2>معاينة الكارت</h2>
+<div class="preview" id="preview">
+<div>
+<div class="heart">♡</div>
+<div class="quote" id="quote">وجودك بيخلّي الأيام العادية أحلى، وكل ذكرى معاك ليها مكان خاص في قلبي.</div>
+<div class="sub" id="to">إلى شخص مميز</div>
+</div>
+</div>
+</section>
+<section class="card">
+<h2>حاجات صغيرة بتقول كتير</h2>
+<div class="gallery">
+<div class="tile"><span class="emoji">🌹</span><strong>وردة ليك</strong><span>لأنك تستاهل كل جميل</span></div>
+<div class="tile"><span class="emoji">🌙</span><strong>ليلة هادية</strong><span>أتمنى لك راحة وفرحة</span></div>
+<div class="tile"><span class="emoji">💗</span><strong>كلمة من القلب</strong><span>وجودك فارق بجد</span></div>
+<div class="tile"><span class="emoji">✨</span><strong>ذكرى حلوة</strong><span>الحاجات البسيطة بتفضل</span></div>
+</div>
+</section>
+<footer>اتعمل بحب ♡</footer>
+</main>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+function draw(){
+ const name=$('name').value.trim();
+ $('quote').textContent=$('message').value.trim()||'كلام من القلب';
+ $('to').textContent=name?'إلى '+name:'إلى شخص مميز';
+ const p=$('preview');
+ const s=$('style').value;
+ if(s==='night'){p.style.background='linear-gradient(145deg,#21153c,#52305e,#292448)';p.style.color='#fff0fb'}
+ else if(s==='sunset'){p.style.background='linear-gradient(145deg,#ffd1a8,#f7a9bb,#a45b79)';p.style.color='#54233c'}
+ else{p.style.background='linear-gradient(145deg,#f7c5d8,#fff0f5 55%,#e6b0c7)';p.style.color='#682441'}
+}
+$('update').addEventListener('click',draw);
+$('style').addEventListener('change',draw);
+$('save').addEventListener('click',()=>{
+ draw();
+ const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1350;
+ const c=canvas.getContext('2d'),s=$('style').value;
+ let grad=c.createLinearGradient(0,0,1080,1350);
+ if(s==='night'){grad.addColorStop(0,'#21153c');grad.addColorStop(1,'#52305e')}
+ else if(s==='sunset'){grad.addColorStop(0,'#ffd1a8');grad.addColorStop(1,'#a45b79')}
+ else{grad.addColorStop(0,'#f7c5d8');grad.addColorStop(1,'#fff0f5')}
+ c.fillStyle=grad;c.fillRect(0,0,1080,1350);
+ c.textAlign='center';c.fillStyle=s==='night'?'#fff0fb':'#682441';
+ c.font='100px serif';c.fillText('♡',540,330);
+ const msg=$('message').value.trim()||'كلام من القلب';
+ c.font='bold 52px Tahoma, Arial, sans-serif';
+ const words=msg.split(/\s+/),lines=[];let line='';
+ for(const w of words){let test=line?line+' '+w:w;if(c.measureText(test).width>850&&line){lines.push(line);line=w}else line=test}
+ if(line)lines.push(line);
+ let y=510;for(const l of lines){c.fillText(l,540,y);y+=78}
+ c.font='42px Tahoma, Arial, sans-serif';
+ c.fillText($('name').value.trim()?'إلى '+$('name').value.trim():'إلى شخص مميز',540,Math.min(y+75,1120));
+ c.font='30px Tahoma, Arial, sans-serif';c.fillText('حكاية حب ♡',540,1240);
+ const a=document.createElement('a');a.download='hekayet-hob.png';a.href=canvas.toDataURL('image/png');a.click();
+});
+draw();
+</script>
+</body>
+</html>
